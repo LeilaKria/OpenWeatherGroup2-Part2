@@ -341,7 +341,7 @@
                 android:gravity="center"
                 android:text="🔼\n00.00°C"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
