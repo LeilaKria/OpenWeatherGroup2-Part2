@@ -21,7 +21,7 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
         when(p0!!.id){
             R.id.btn_search_loc -> {
-                val intent = Intent(intent.SearchLocation::class.java)
+                val intent = Intent(this,SearchLocation::class.java)
                 startActivity(intent)
             }
             R.id.btn_weather_forecast -> {
