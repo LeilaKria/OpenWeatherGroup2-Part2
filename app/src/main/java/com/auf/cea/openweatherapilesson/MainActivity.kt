@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.hide()
 
         forecastData = arrayListOf()
         adapter = WeatherAdapter(forecastData,this)
@@ -88,8 +87,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             binding.txtWeatherType.text = todayWeather.weather[0].main
             binding.txtTemp.text = String.format("%s°C",todayWeather.main.temp)
             binding.txtFeelsLike.text = String.format("\uD83C\uDF21\n%s°C",todayWeather.main.feels_like)
-            binding.txtMinTemp.text = String.format("\uD83D\uDD3D\n%s°C",todayWeather.main.temp_min)
-            binding.txtMaxTemp.text = String.format("\uD83D\uDD3C\n%s°C",todayWeather.main.temp_max)
+            binding.txtMinTemp.text = String.format("⬇️\n%s°C",todayWeather.main.temp_min)
+            binding.txtMaxTemp.text = String.format("⬆️\n%s°C",todayWeather.main.temp_max)
 
         }
     }
@@ -114,7 +113,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding.progressBar.isVisible = true
         binding.rvForecast.isVisible = false
         binding.imgInfo.isVisible = false
-        object : CountDownTimer(3000,1000){
+        object : CountDownTimer(1000,1000){
             override fun onTick(p0: Long) {
 
             }

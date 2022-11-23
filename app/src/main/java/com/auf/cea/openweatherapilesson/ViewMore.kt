@@ -12,6 +12,7 @@ class ViewMore : AppCompatActivity() {
         binding = ActivityViewMoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val weather = intent.getSerializableExtra("weatherData") as ForecastModel
 
         val feelsLike = weather.main.feels_like // Feels Like
@@ -32,13 +33,13 @@ class ViewMore : AppCompatActivity() {
         binding.txtFeelsLike.text = String.format("\uD83C\uDF21\n%s°C", feelsLike)
         binding.txtMinTemp.text = String.format("⬇️\n%s°C", minTemp)
         binding.txtMaxTemp.text = String.format("⬆️\n%s°C", maxTemp)
-        binding.txtRainChance.text = String.format(" \uD83C\uDF27\n%s%%", rainChance)
-        binding.txtCloudiness.text = String.format(" ☁\n%s%%", cloudiness)
-        binding.txtHumidity.text = String.format(" \uD83D\uDCA7\n%s%%", humidity)
-        binding.txtPressure.text = String.format(" \uD83D\uDCA8\n%shPa", pressure)
-        binding.txtGndLevel.text = String.format(" \uD83C\uDFD4\n%shPa", gndLevel)
-        binding.txtSeaLevel.text = String.format(" \uD83C\uDF0A\n%shPa", seaLevel)
-        binding.txtWindSpeed.text = String.format(" \uD83C\uDF2C\n%sm/s", windSpeed)
+        binding.txtRainChance.text = String.format("\uD83C\uDF27\n%s%%", rainChance)
+        binding.txtCloudiness.text = String.format("☁\n%s%%", cloudiness)
+        binding.txtHumidity.text = String.format("\uD83D\uDCA7\n%s%%", humidity)
+        binding.txtPressure.text = String.format("\uD83D\uDCA8\n%shPa", pressure)
+        binding.txtGndLevel.text = String.format("\uD83C\uDFD4\n%shPa", gndLevel)
+        binding.txtSeaLevel.text = String.format("\uD83C\uDF0A\n%shPa", seaLevel)
+        binding.txtWindSpeed.text = String.format("\uD83C\uDF2C\n%sm/s", windSpeed)
         binding.txtVisibility.text = String.format("\uD83D\uDC41\n%sm", visibility)
         binding.txtWindGust.text = String.format("\uD83C\uDF00\n%sm/s", windGust)
 

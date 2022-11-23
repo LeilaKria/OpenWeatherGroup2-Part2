@@ -4,8 +4,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
+import androidx.core.view.isGone
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.auf.cea.openweatherapilesson.constants.API_KEY
 import com.auf.cea.openweatherapilesson.constants.CITY_NAME
 import com.auf.cea.openweatherapilesson.databinding.ActivitySearchLocationBinding
@@ -29,15 +33,24 @@ class SearchLocation : AppCompatActivity(), View.OnClickListener {
         binding = ActivitySearchLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         sharedPreferences = getSharedPreferences(CITY_NAME, Context.MODE_PRIVATE)
 
         binding.btnSearch.setOnClickListener(this)
+                binding.llCityDetails.visibility = View.GONE
+                binding.llCityTemp.visibility = View.GONE
+                binding.cvParam.visibility = View.GONE
+
+
+
     }
 
 
     override fun onClick(p0: View?) {
         when(p0!!.id) {
             (R.id.btn_search) -> {
+
+
 
                 val cityName = binding.edtLocation.text.toString()
                 if (cityName.isEmpty()) {
@@ -47,6 +60,11 @@ class SearchLocation : AppCompatActivity(), View.OnClickListener {
                     binding.txtLoc.text = binding.edtLocation.text.toString()
                     Log.d(SearchLocation::class.java.simpleName,cityName)
                     getCurrentWeather(cityName)
+
+                    binding.llCityDetails.visibility = View.VISIBLE
+                    binding.llCityTemp.visibility = View.VISIBLE
+                    binding.cvParam.visibility = View.VISIBLE
+
                 }
 
                 val editor = sharedPreferences.edit()
@@ -70,13 +88,13 @@ class SearchLocation : AppCompatActivity(), View.OnClickListener {
                     binding.txtTime.text = getTime(currentWeather.dt)
                     binding.txtDate.text = getDate(currentWeather.dt)
                     binding.txtCurrentFeelsLike.text = String.format("\uD83C\uDF21\n%s°C", currentWeather.main.feels_like)
-                    binding.txtCurrentHumidity.text = String.format(" \uD83D\uDCA7\n%s%%", currentWeather.main.humidity)
-                    binding.txtCurrentPressure.text = String.format(" \uD83D\uDCA8\n%s hPa", currentWeather.main.pressure)
-                    binding.txtCurrentWindSpeed.text = String.format("%s m/s", currentWeather.wind.speed)
+                    binding.txtCurrentHumidity.text = String.format("\uD83D\uDCA7\n%s%%", currentWeather.main.humidity)
+                    binding.txtCurrentPressure.text = String.format("\uD83D\uDCA8\n%shPa", currentWeather.main.pressure)
+                    binding.txtCurrentWindSpeed.text = String.format("%sm/s", currentWeather.wind.speed)
                     binding.txtCurrentTemp.text = String.format("%s°C", currentWeather.main.temp)
                     binding.txtMinMax.text = String.format("Min: %s°C | Max: %s°C", currentWeather.main.temp_min, currentWeather.main.temp_max)
-                    binding.txtSunrise.text = getTime(currentWeather.sys.sunrise) // get time
-                    binding.txtSunset.text = getTime(currentWeather.sys.sunset) // gettime
+                    binding.txtSunrise.text = getTime(currentWeather.sys.sunrise)
+                    binding.txtSunset.text = getTime(currentWeather.sys.sunset)
 
                 }
             } else {
@@ -84,12 +102,15 @@ class SearchLocation : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
+
+
     private fun getTime(timeStamp: Long): String{
         return SimpleDateFormat("hh:mm aa", Locale.ENGLISH).format(timeStamp * 1000)
     }
 
     private fun getDate(timeStamp: Long): String{
-        return SimpleDateFormat("MMMM dd ,yyyy", Locale.ENGLISH).format(timeStamp * 1000)
+        return SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH).format(timeStamp * 1000)
     }
 }
 

@@ -14,8 +14,11 @@ class MainMenu : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.btnSearchLoc.setOnClickListener(this)
         binding.btnWeatherForecast.setOnClickListener(this)
+
+
     }
 
     override fun onClick(p0: View?) {
