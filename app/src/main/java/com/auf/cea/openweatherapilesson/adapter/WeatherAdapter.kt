@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.auf.cea.openweatherapilesson.ViewMore
 import com.auf.cea.openweatherapilesson.constants.BASE_IMAGE_URL
-import com.auf.cea.openweatherapilesson.constants.WEATHER_FORECAST
 import com.auf.cea.openweatherapilesson.databinding.ContentForecastRvBinding
 import com.auf.cea.openweatherapilesson.models.ForecastModel
 import com.bumptech.glide.Glide

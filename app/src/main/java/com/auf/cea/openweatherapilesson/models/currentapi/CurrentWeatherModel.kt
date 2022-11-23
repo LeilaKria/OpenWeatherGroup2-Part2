@@ -5,7 +5,7 @@ data class CurrentWeatherModel(
     var clouds: Clouds,
     var cod: Int,
     var coord: Coord,
-    var dt: Int,
+    var dt: Long,
     var id: Int,
     var main: Main,
     var name: String,

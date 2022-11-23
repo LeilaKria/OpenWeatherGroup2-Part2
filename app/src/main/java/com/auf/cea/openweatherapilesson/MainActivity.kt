@@ -78,9 +78,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     adapter.updateData(forecastData)
 
                     updateTodayWeather(todayWeather)
+
+                    binding.txtTime.text = getTime(todayWeather.dt)
+                    binding.txtDay.text = getDay(todayWeather.dt)
                 }
 
             }
+
             binding.txtWeatherType.text = todayWeather.weather[0].main
             binding.txtTemp.text = String.format("%s°C",todayWeather.main.temp)
             binding.txtFeelsLike.text = String.format("\uD83C\uDF21\n%s°C",todayWeather.main.feels_like)

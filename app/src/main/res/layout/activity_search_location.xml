@@ -307,6 +307,19 @@
                     android:text="Wind Speed"
                     android:textColor="#2E3F8F"
                     android:textSize="13sp" />
+                <TextView
+                    android:layout_width="115dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="🌬️"
+                    android:textColor="#2E3F8F"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txt_current_wind_speed"
@@ -317,7 +330,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center"
-                    android:text="🌬️\n00.00m/s"
+                    android:text="00.00 m/s"
                     android:textColor="#2E3F8F"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -367,7 +380,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center"
-                    android:text="00.00AM"
+                    android:text="00.00 AM"
                     android:textColor="#2E3F8F"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -417,7 +430,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center"
-                    android:text="00.00PM"
+                    android:text="00.00 PM"
                     android:textColor="#2E3F8F"
                     android:textSize="20sp"
                     android:textStyle="bold" />

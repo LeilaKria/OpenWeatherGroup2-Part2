@@ -64,22 +64,19 @@ class SearchLocation : AppCompatActivity(), View.OnClickListener {
             val data = result.body()
 
             if (data != null) {
-              currentWeather = data
-//                Log.d(SearchLocation::class.java.simpleName,data.name)
+                currentWeather = data
                 withContext(Dispatchers.Main){
                     binding.txtTimezone.text = String.format("GMT+%s", currentWeather.timezone / 3600)
                     binding.txtTime.text = getTime(currentWeather.dt)
+                    binding.txtDate.text = getDate(currentWeather.dt)
                     binding.txtCurrentFeelsLike.text = String.format("\uD83C\uDF21\n%s°C", currentWeather.main.feels_like)
                     binding.txtCurrentHumidity.text = String.format(" \uD83D\uDCA7\n%s%%", currentWeather.main.humidity)
                     binding.txtCurrentPressure.text = String.format(" \uD83D\uDCA8\n%s hPa", currentWeather.main.pressure)
-                    binding.txtCurrentWindSpeed.text = String.format(" \uD83C\uDF2C\n%s m/s", currentWeather.wind.speed)
+                    binding.txtCurrentWindSpeed.text = String.format("%s m/s", currentWeather.wind.speed)
                     binding.txtCurrentTemp.text = String.format("%s°C", currentWeather.main.temp)
                     binding.txtMinMax.text = String.format("Min: %s°C | Max: %s°C", currentWeather.main.temp_min, currentWeather.main.temp_max)
                     binding.txtSunrise.text = getTime(currentWeather.sys.sunrise) // get time
                     binding.txtSunset.text = getTime(currentWeather.sys.sunset) // gettime
-
-
-
 
                 }
             } else {
@@ -87,8 +84,12 @@ class SearchLocation : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
-    private fun getTime(timeStamp: Int): String{
+    private fun getTime(timeStamp: Long): String{
         return SimpleDateFormat("hh:mm aa", Locale.ENGLISH).format(timeStamp * 1000)
+    }
+
+    private fun getDate(timeStamp: Long): String{
+        return SimpleDateFormat("MMMM dd ,yyyy", Locale.ENGLISH).format(timeStamp * 1000)
     }
 }
 
